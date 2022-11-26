@@ -7,12 +7,18 @@ public class Club {
     private double budget;
     private ArrayList<Sportif> sportifs;
     private ArrayList<Tournoi> historiqueTournoi;
+    private String nom;
 
-    Club(Sport sport, double budget) {
+    Club(Sport sport, double budget,String nom) {
         this.sport = sport;
         this.budget = budget;
+        this.nom = nom;
         this.sportifs = new ArrayList<Sportif>();
         this.historiqueTournoi = new ArrayList<Tournoi>();
+    }
+
+    public String getNom(){
+        return this.nom;
     }
 
     public boolean participerTournoi(Organisation organisation, Tournoi tournoi) {

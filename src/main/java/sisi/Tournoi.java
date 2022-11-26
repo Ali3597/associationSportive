@@ -31,8 +31,20 @@ public class Tournoi {
         return this.prixParticipation;
     }
     public Date getDateDebut(){
-        return this.getDateDebut();
+        return this.dateDebut;
     }
+
+    public int getNbMaximumParticipants(){
+        return this.nbMaximumParticipants;
+    }
+    public int getNbMinimumParticipants() {
+        return this.nbMinimumParticipants;
+    }
+
+    public  Club[] getGagnants(){
+        return this.gagnants;
+    }
+  
 
     public Sport getSport(){
         return this.sport;
@@ -47,8 +59,8 @@ public class Tournoi {
         this.clubsParticipant.add(club);
     }
 
-    public void getPrixCreation(){
-
+    public double getPrixCreation(){
+        return  (this.nbMaximumParticipants * (10 * this.sport.prestige )) +this.cashPrice;
     }
 
     public void setGagnants(Club[] gagnants){

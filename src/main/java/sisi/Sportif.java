@@ -1,15 +1,16 @@
 package sisi;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.Period;
 
 public class Sportif {
 
     private String nom;
     private String prenom;
-    private Date dateNaissance;
+    private LocalDate dateNaissance;
     private Club club;
     private double prestige;
 
-    Sportif(String nom,String prenom, Date dateNaissance){
+    Sportif(String nom,String prenom, LocalDate dateNaissance){
         this.nom = nom;
         this.prenom = prenom;
         this.dateNaissance = dateNaissance;
@@ -21,13 +22,21 @@ public class Sportif {
         return this.prestige;
     }
 
+    public int getAge(){
+        LocalDate curDate = LocalDate.now();
+        return Period.between(this.dateNaissance, curDate).getYears();
+    }
+
     public void setClub(Club club){
         this.club = club;
     }
 
 
     public boolean isAdulte() {
-		return true;
+        if (getAge() >= 18){
+            return true;
+        }
+		return false;
 	}
 
     public boolean integrerClub(Club club){
@@ -39,7 +48,7 @@ public class Sportif {
     }
 
 	public void afficherInformations() {
-		System.out.print(" to do " );
+		System.out.print(this.nom + " " + this.prenom + " a  "+ this.getAge() + " ans et  " + (this.club != null ? " est dans le club " + club.getNom() : "est sans club ")  );
 	}
 
 }

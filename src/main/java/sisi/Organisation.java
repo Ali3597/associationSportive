@@ -14,14 +14,19 @@ public class Organisation {
         this.nosTournois =  new ArrayList<Tournoi>();
     }
 
+    public String getNom(){
+        return this.nom;
+    }
+
     public boolean creerTournoi(int nbMaximumParticipants,int nbMinimumParticipants,double cashPrice,Sport sport,Date dateDebut,double prixParticipation) {
         Tournoi tournoi = new Tournoi(nbMaximumParticipants, nbMinimumParticipants, cashPrice, sport, dateDebut, prixParticipation);
-        if (nbMaximumParticipants > nbMinimumParticipants & tournoi.getPrixParticipation() < this.budget &  tournoi.getDateDebut().compareTo(new Date()) > 0 ){
+        if (tournoi.getNbMaximumParticipants() > tournoi.getNbMinimumParticipants() & tournoi.getPrixParticipation() < this.budget &  tournoi.getDateDebut().compareTo(new Date()) > 0 ){
             this.nosTournois.add(tournoi);
             return true;
         }
         return false;
     }
+
 
     public boolean monTournoi(Tournoi tounoi){
         if(this.nosTournois.contains(tounoi)){
