@@ -9,10 +9,10 @@ public enum Sport {
     HANDBALL(0.8,24);
 
     Double prestige;
-    int nbMaxParEquipe;
+    int nbMaxParClub;
 
-    Sport(Double prestige, int nbMaxParEquipe) {
+    Sport(Double prestige, int nbMaxParClub) {
         this.prestige = prestige;
-        this.nbMaxParEquipe = nbMaxParEquipe;
+        this.nbMaxParClub = nbMaxParClub;
     }
 }

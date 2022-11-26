@@ -3,9 +3,9 @@ package sisi;
 import java.util.ArrayList;
 
 public class Organisation {
-    String nom;
-    Double budget;
-    ArrayList<Tournoi> nosTournois;
+    private String nom;
+    private Double budget;
+    private ArrayList<Tournoi> nosTournois;
 
     Organisation(String nom,double budget ){
         this.nom = nom;

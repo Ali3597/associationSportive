@@ -3,13 +3,17 @@ package sisi;
 import java.util.ArrayList;
 
 public class Tournoi {
-    ArrayList<Club> clubParticipant;
-    int nbMaximumPArticipants;
-    double cashPrice;
-    double prixParticipation;
-    double prixCreation;
-    Sport sport;
-    Sportif[] gagnants;
+    private ArrayList<Club> clubParticipant;
+    private int nbMaximumPArticipants;
+    private double cashPrice;
+    private double prixParticipation;
+    private double prixCreation;
+    private Sport sport;
+    private Sportif[] gagnants;
+
+    public double getPrixParticipation(){
+        return this.prixParticipation;
+    }
 
     public void addParticipant(){
         
@@ -21,5 +25,9 @@ public class Tournoi {
 
     public void setGagnants(Sportif[] gagnants){
         this.gagnants = gagnants;
+    }
+
+    public boolean tournoiPlein(){
+        return true;
     }
 }
