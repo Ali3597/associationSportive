@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: sisi.TournoiTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! - in sisi.TournoiTest
+testOrganiserTournoi(sisi.TournoiTest)  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: on peut pas rganise r
+	at sisi.TournoiTest.testOrganiserTournoi(TournoiTest.java:11)
+
