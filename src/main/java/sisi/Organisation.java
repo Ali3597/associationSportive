@@ -32,6 +32,7 @@ public class Organisation {
 
     public boolean inscrireEquipeTournoi(Tournoi tournoi, Club club) {
         if (this.monTournoi(tournoi) & !tournoi.tournoiPlein()){
+            this.budget += tournoi.getPrixParticipation();
             tournoi.addClub(club);
         }
         return true;
@@ -39,9 +40,13 @@ public class Organisation {
 
     public void declarerVainqueur(Tournoi tournoi,Club premier, Club second, Club troisieme) {
         if (this.monTournoi(tournoi)){
+            double prestigeSport = tournoi.getSport().prestige;
+            double cashPrice = tournoi.getCashPrice();
+            premier.recupererRecompense(3* prestigeSport, (cashPrice*4) /6   );
+            second.recupererRecompense(2* prestigeSport,(cashPrice*2) /6);
+            troisieme.recupererRecompense(prestigeSport, cashPrice /6);
             tournoi.setGagnants(new Club[]{premier,second,troisieme} );
         }
 
     }
-
 }

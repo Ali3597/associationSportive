@@ -15,10 +15,15 @@ public class Club {
         this.historiqueTournoi = new ArrayList<Tournoi>();
     }
 
-    public boolean participerTournoi(Tournoi tournoi) {
+    public boolean participerTournoi(Organisation organisation, Tournoi tournoi) {
         double aPayer = tournoi.getPrixParticipation();
-        if  (this.budget > aPayer & !tournoi.tournoiPlein() ){
-            this.historiqueTournoi.add(tournoi);
+        if  (this.budget > aPayer  ){
+            if (organisation.inscrireEquipeTournoi(tournoi, this)){
+                this.budget -= aPayer;
+                this.historiqueTournoi.add(tournoi);
+                return true;
+            }
+            
             return false;
         }
 
@@ -64,6 +69,15 @@ public class Club {
 
     public void aficherTournoisVainqueur(){
         System.out.print(" to do " );
+    }
+
+    
+
+    public void recupererRecompense(double prestige,double cashPrice){
+        for (int i =0; i < this.sportifs.size();i++){
+            this.sportifs.get(i).actualiserPrestige(prestige);
+        }
+        this.budget += cashPrice;
     }
 
 }

@@ -34,6 +34,13 @@ public class Tournoi {
         return this.getDateDebut();
     }
 
+    public Sport getSport(){
+        return this.sport;
+    }
+
+    public double getCashPrice(){
+        return this.cashPrice;
+    }
    
 
     public void addClub(Club club){
