@@ -1,33 +1,57 @@
 package sisi;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Tournoi {
-    private ArrayList<Club> clubParticipant;
-    private int nbMaximumPArticipants;
+    private ArrayList<Club> clubsParticipant;
+    private int nbMaximumParticipants;
+    private int nbMinimumParticipants;
     private double cashPrice;
+    private Date dateDebut;
     private double prixParticipation;
-    private double prixCreation;
     private Sport sport;
-    private Sportif[] gagnants;
+    private Club[] gagnants;
+
+
+    Tournoi(int nbMaximumParticipants,int nbMinimumParticipants,double cashPrice,Sport sport,Date dateDebut,double prixParticipation ){
+        this.nbMaximumParticipants =nbMaximumParticipants;
+        this.nbMinimumParticipants = nbMinimumParticipants;
+        this.cashPrice =cashPrice;
+        this.sport = sport;
+        this.dateDebut = dateDebut;
+        this.prixParticipation = prixParticipation;
+        this.gagnants = new Club[3];
+        this.clubsParticipant = new ArrayList<Club>();
+
+
+    }
 
     public double getPrixParticipation(){
         return this.prixParticipation;
     }
-
-    public void addParticipant(){
-        
+    public Date getDateDebut(){
+        return this.getDateDebut();
     }
 
-    public void definirPrixCreation(){
+   
+
+    public void addClub(Club club){
+        this.clubsParticipant.add(club);
+    }
+
+    public void getPrixCreation(){
 
     }
 
-    public void setGagnants(Sportif[] gagnants){
+    public void setGagnants(Club[] gagnants){
         this.gagnants = gagnants;
     }
 
     public boolean tournoiPlein(){
+        if(this.nbMaximumParticipants < this.clubsParticipant.size()){
+            return  false;
+        }
         return true;
     }
 }
