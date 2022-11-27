@@ -8,6 +8,6 @@ public class TournoiTest {
 
     @Test
     public void testOrganiserTournoi() {
-        assertTrue(true);
+        assertTrue(false);
     }
 }
