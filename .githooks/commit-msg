@@ -1,0 +1,14 @@
+#!/bin/bash
+
+bug_regex_commit_format='^AS:|^ML:|^MK:|^SL:'
+error_msg="Commit not allowed, message should have your initials while committing code"
+
+if ! grep -iqE "$bug_regex_commit_format" "$1"; then
+	echo "$error_msg" >&2
+	echo "Below are sample commits"
+	echo " AS: message"
+	echo " SL: message"
+	exit 1
+else
+	echo "Commit is successful"
+fi
