@@ -18,6 +18,14 @@ public class Sportif {
         this.prestige = 0;
     }
 
+
+    Sportif(String nom,String prenom, LocalDate dateNaissance, double prestige ){
+        this.nom = nom;
+        this.prenom = prenom;
+        this.dateNaissance = dateNaissance;
+        this.prestige = prestige;
+    }
+
     public double getPrestige(){
         return this.prestige;
     }
@@ -25,6 +33,10 @@ public class Sportif {
     public int getAge(){
         LocalDate curDate = LocalDate.now();
         return Period.between(this.dateNaissance, curDate).getYears();
+    }
+    
+    public Club getClub(){
+        return this.club;
     }
 
     public void setClub(Club club){

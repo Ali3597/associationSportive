@@ -1,8 +1,7 @@
 package sisi;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
-
 public class Organisation {
     private String nom;
     private Double budget;
@@ -18,13 +17,14 @@ public class Organisation {
         return this.nom;
     }
 
-    public boolean creerTournoi(int nbMaximumParticipants,int nbMinimumParticipants,double cashPrice,Sport sport,Date dateDebut,double prixParticipation) {
-        Tournoi tournoi = new Tournoi(nbMaximumParticipants, nbMinimumParticipants, cashPrice, sport, dateDebut, prixParticipation);
-        if (tournoi.getNbMaximumParticipants() > tournoi.getNbMinimumParticipants() & tournoi.getPrixParticipation() < this.budget &  tournoi.getDateDebut().compareTo(new Date()) > 0 ){
+    public Tournoi creerTournoi(int nbMaximumParticipants,int nbMinimumParticipants,double cashPrice,Sport sport,LocalDate dateDebut,LocalDate dateFin,double prixParticipation) {
+        Tournoi tournoi = new Tournoi(nbMaximumParticipants, nbMinimumParticipants, cashPrice, sport, dateDebut,dateFin,prixParticipation);
+        if (tournoi.getNbMaximumParticipants() > tournoi.getNbMinimumParticipants() & tournoi.getPrixParticipation() < this.budget &  tournoi.getDateDebut().isAfter(LocalDate.now()) & tournoi.getDateDebut().isBefore(tournoi.getDateFin()) ){
+            this.budget -= tournoi.getPrixCreation();
             this.nosTournois.add(tournoi);
-            return true;
+            return tournoi;
         }
-        return false;
+        return null;
     }
 
 

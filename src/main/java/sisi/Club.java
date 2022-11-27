@@ -20,10 +20,16 @@ public class Club {
     public String getNom(){
         return this.nom;
     }
+    public  ArrayList<Sportif> getSportifs(){
+        return this.sportifs;
+    }
+    public double getBudget(){
+        return this.budget;
+    }
 
     public boolean participerTournoi(Organisation organisation, Tournoi tournoi) {
         double aPayer = tournoi.getPrixParticipation();
-        if  (this.budget > aPayer  ){
+        if  (this.budget > aPayer & this.sportifs.size() >= this.sport.nbMinParClub  ){
             if (organisation.inscrireEquipeTournoi(tournoi, this)){
                 this.budget -= aPayer;
                 this.historiqueTournoi.add(tournoi);
@@ -41,18 +47,23 @@ public class Club {
     
     public Boolean integrerSportif(Sportif sportif) {
         if (this.placeClub() ){
-            this.sportifs.add(sportif);
+            this.addPortif(sportif);
             return true;
         }else if (sportif.getPrestige() > this.avoirSportifAvecMoinsPrestige().getPrestige() ) {
             Sportif sportifEjecte = this.avoirSportifAvecMoinsPrestige();
             this.ejecterSportif(sportifEjecte);
-            this.sportifs.add(sportif);
+            this.addPortif(sportif);
             return true;
         }
         return false;
     }
 
-    public void ejecterSportif(Sportif sportif){
+    private void addPortif(Sportif sportif){
+            this.sportifs.add(sportif);
+            sportif.setClub(this);
+    }
+
+    private void ejecterSportif(Sportif sportif){
         this.sportifs.remove(sportif);
         sportif.setClub(null);
     }
