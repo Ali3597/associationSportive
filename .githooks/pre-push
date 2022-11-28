@@ -1,20 +1,11 @@
-#!/bin/bash
+#!/bin/sh
 
-# save the file as <git_directory>/.git/hooks/pre-commit
+while read local_ref local_sha remote_ref remote_sha
+do
+     if [ "$remote_ref" = "refs/heads/dev" || "$remote_ref" = "refs/heads/stage" || "$remote_ref" = "refs/heads/prod"  ]; then
+        echo "Pushing to branch dev ,stage or prod is forbidden"
+        exit 1
+     fi
+done
 
-echo "Running Maven clean test for errors"
-# retrieving current working directory
-CWD=`pwd`
-MAIN_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-# go to main project dir
-cd $MAIN_DIR/../
-# running maven clean test
-mvn clean test
-if [ $? -ne 0 ]; then
-  "Error while testing the code"
-  # go back to current working dir
-  cd $CWD
-  exit 1
-fi
-# go back to current working dir
-cd $CWD
+exit 0
