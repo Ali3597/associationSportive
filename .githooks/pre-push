@@ -1,11 +1,12 @@
-BRANCH=`git rev-parse --abbrev-ref HEAD`
-PUSH_COMMAND=`ps -ocommand= -p $PPID`
 
-if [[ "$BRANCH" =~ ^(prod|stage|dev)$ ]]; then
+#!/bin/sh
 
-  echo "Pushing to branch prod stage or dev  is forbidden"
-
-  exit 1
-fi
+while read local_ref local_sha remote_ref remote_sha
+do
+     if [ "$remote_ref" = "refs/heads/dev" ]; then
+        echo "Pushing to branch \"test\" is forbidden"
+        exit 1
+     fi
+done
 
 exit 0
