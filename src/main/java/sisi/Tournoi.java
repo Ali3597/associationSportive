@@ -58,6 +58,10 @@ public class Tournoi {
     public double getCashPrice(){
         return this.cashPrice;
     }
+
+    public  ArrayList<Club> getParticipants(){
+        return this.clubsParticipant;
+    }
    
 
     public void addClub(Club club){
@@ -73,7 +77,7 @@ public class Tournoi {
     }
 
     public boolean tournoiPlein(){
-        if(this.nbMaximumParticipants < this.clubsParticipant.size()){
+        if(this.nbMaximumParticipants > this.clubsParticipant.size()){
             return  false;
         }
         return true;
